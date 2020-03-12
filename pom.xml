@@ -11,6 +11,7 @@
 
   <modules>
     <module>sorting/quicksort</module>
+    <module>sorting/mergesort</module>
   </modules>
 
   <dependencies>
