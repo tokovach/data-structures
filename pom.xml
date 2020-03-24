@@ -13,6 +13,7 @@
     <module>sorting/quicksort</module>
     <module>sorting/mergesort</module>
     <module>sorting/bubblesort</module>
+    <module>data-structures/graph</module>
   </modules>
 
   <dependencies>
