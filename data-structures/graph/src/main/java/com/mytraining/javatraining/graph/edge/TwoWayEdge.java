@@ -6,51 +6,55 @@ import java.util.HashSet;
 import java.util.Objects;
 import java.util.Set;
 
-public class TwoWayEdge<V, E> implements IndirectEdge<V, E> {
-	private final Set<V> vertices;
-	private E value;
+public class TwoWayEdge<L, E> implements IndirectEdge<L, E> {
+  private final Set<L> vertices;
+  private final int hashCode;
+  private E value;
 
-	TwoWayEdge(V firstVertex, V secondVertex, E value) {
-		validateVertices(firstVertex, secondVertex);
-		vertices = Collections.unmodifiableSet(new HashSet<>(Arrays.asList(firstVertex, secondVertex)));
-		this.value = value;
-	}
+  TwoWayEdge(L firstVertexLabel, L secondVertexLabel, E value) {
+    validateVertices(firstVertexLabel, secondVertexLabel);
+    this.vertices =
+        Collections.unmodifiableSet(
+            new HashSet<>(Arrays.asList(firstVertexLabel, secondVertexLabel)));
+    this.hashCode = Objects.hash(vertices);
+    this.value = value;
+  }
 
-	@Override
-	public Set<V> getVertices() {
-		return vertices;
-	}
+  @Override
+  public Set<L> getVertices() {
+    return vertices;
+  }
 
-	@Override
-	public E getValue() {
-		return value;
-	}
+  @Override
+  public E getValue() {
+    return value;
+  }
 
-	@Override
-	public void setValue(E value) {
-		this.value = value;
-	}
+  @Override
+  public void setValue(E value) {
+    this.value = value;
+  }
 
-	@Override
-	public boolean equals(Object o) {
-		if (o == this) {
-			return true;
-		}
-		if (!(o instanceof IndirectEdge)) {
-			return false;
-		}
-		IndirectEdge edge = (IndirectEdge) o;
-		return this.vertices.equals(edge.getVertices());
-	}
+  @Override
+  public boolean equals(Object o) {
+    if (o == this) {
+      return true;
+    }
+    if (!(o instanceof IndirectEdge)) {
+      return false;
+    }
+    IndirectEdge<L, E> edge = (IndirectEdge<L, E>) o;
+    return vertices.equals(edge.getVertices());
+  }
 
-	@Override
-	public int hashCode() {
-		return Objects.hash(vertices);
-	}
+  @Override
+  public int hashCode() {
+    return hashCode;
+  }
 
-	private void validateVertices(V firstVertex, V secondVertex) {
-		if (Objects.requireNonNull(firstVertex) == Objects.requireNonNull(secondVertex)) {
-			throw new IllegalArgumentException();
-		}
-	}
+  private void validateVertices(L firstVertexLabel, L secondVertexLabel) {
+    if (Objects.requireNonNull(firstVertexLabel) == Objects.requireNonNull(secondVertexLabel)) {
+      throw new IllegalArgumentException();
+    }
+  }
 }

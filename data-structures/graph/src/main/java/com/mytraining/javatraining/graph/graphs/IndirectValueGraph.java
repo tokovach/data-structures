@@ -7,23 +7,23 @@ import java.util.HashSet;
 import java.util.Objects;
 import java.util.Set;
 
+import com.mytraining.javatraining.graph.edge.IndirectEdge;
 import com.mytraining.javatraining.graph.vertex.Vertex;
 
-public class DirectGraph<L, V> implements Graph<L, V> {
+public class IndirectValueGraph<L, V, E> implements ValueGraph<L, V, E> {
   private HashMap<L, Vertex<L, V>> vertices;
-  private HashMap<L, HashSet<L>> edges;
+  private HashSet<IndirectEdge<L, E>> edges;
 
-  public DirectGraph() {
+  public IndirectValueGraph() {
     this.vertices = new HashMap<>();
-    this.edges = new HashMap<>();
+    this.edges = new HashSet<>();
   }
 
   @Override
   public boolean addVertex(L vertexLabel, V vertexValue) {
     return vertices.putIfAbsent(
-                Objects.requireNonNull(vertexLabel), newVertex(vertexLabel, vertexValue))
-            == null
-        && edges.putIfAbsent(vertexLabel, new HashSet<>()) == null;
+            Objects.requireNonNull(vertexLabel), newVertex(vertexLabel, vertexValue))
+        == null;
   }
 
   @Override
@@ -36,11 +36,12 @@ public class DirectGraph<L, V> implements Graph<L, V> {
   }
 
   @Override
-  public boolean addEdge(L startingVertexLabel, L targetVertexLabel) {
+  public boolean addEdge(L startingVertexLabel, L targetVertexLabel, E edgeValue) {
     if (!isEdgePossible(startingVertexLabel, targetVertexLabel)) {
       return false;
     }
-    return edges.get(startingVertexLabel).add(targetVertexLabel);
+    return edges.get(startingVertexLabel).add(targetVertexLabel)
+        && edges.get(targetVertexLabel).add(startingVertexLabel);
   }
 
   @Override
@@ -49,6 +50,7 @@ public class DirectGraph<L, V> implements Graph<L, V> {
       return;
     }
     edges.get(startingVertexLabel).remove(targetVertexLabel);
+    edges.get(targetVertexLabel).remove(startingVertexLabel);
   }
 
   @Override
@@ -78,6 +80,14 @@ public class DirectGraph<L, V> implements Graph<L, V> {
   public Set<L> getNeighbors(L vertexLabel) {
     return edges.get(Objects.requireNonNull(vertexLabel));
   }
+
+  @Override
+  public E getEdgeValue(L firstVertexLabel, L secondVertexLabel) {
+    return null;
+  }
+
+  @Override
+  public void setEdgeValue(L firstVertexLabel, L secondVertexLabel, E value) {}
 
   private boolean isEdgePossible(L startingVertexLabel, L targetVertexLabel) {
     if (!isVertexValid(Objects.requireNonNull(startingVertexLabel))

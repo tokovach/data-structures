@@ -1,8 +1,8 @@
 package com.mytraining.javatraining.graph.edge;
 
-public interface DirectEdge<V, E> {
+public interface DirectEdge<L, E> {
 
-	V getTargetVertex();
+	L getTargetVertex();
 
 	E getValue();
 

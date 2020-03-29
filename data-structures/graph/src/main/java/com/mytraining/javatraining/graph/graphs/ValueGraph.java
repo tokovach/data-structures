@@ -8,7 +8,7 @@ public interface ValueGraph<L, V, E> {
 
 	void removeVertex(L vertexLabel);
 
-	boolean addEdge(L startingVertexLabel, L targetVertexLabel);
+	boolean addEdge(L startingVertexLabel, L targetVertexLabel, E value);
 
 	void removeEdge(L startingVertexLabel, L targetVertexLabel);
 
