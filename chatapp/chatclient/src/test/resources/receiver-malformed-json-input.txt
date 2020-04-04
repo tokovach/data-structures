@@ -1,0 +1,2 @@
+{"actionType":"CLIENT_MESSAGE","time":"12.12.12","clientMessage":"there","user":"Test"}
+{"actionType":"CLIENT_JOIN_MESSAGE","time":"12.12.12","username":"Test1"}

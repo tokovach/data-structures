@@ -1,0 +1,2 @@
+Wrong message
+{"actionType":"CLIENT_JOIN_MESSAGE","time":"12.12.12","username":"Test1"}

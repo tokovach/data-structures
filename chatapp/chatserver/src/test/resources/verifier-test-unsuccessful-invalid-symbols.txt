@@ -1,0 +1,6 @@
+{"actionType":"SEND_USERNAME","time":"12.12.12","username":"daw!"}
+{"actionType":"SEND_USERNAME","time":"12.12.12","username":"&d"}
+{"actionType":"SEND_USERNAME","time":"12.12.12","username":"dawd%"}
+{"actionType":"SEND_USERNAME","time":"12.12.12","username":"da-wwd"}
+{"actionType":"SEND_USERNAME","time":"12.12.12","username":""}
+{"actionType":"SEND_USERNAME","time":"12.12.12","username":"useruser8"}
