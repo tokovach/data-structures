@@ -32,7 +32,11 @@ public class TestJ {
 	}
 
 	public void addToModel(Resource subject, IRI predicate, Value object) {
-		model.add(subject, predicate, object);
+		model.add(subject, predicate, object,createIRI("http://orga.org/"));
+	}
+
+	public Model getModel(){
+		return model;
 	}
 
 	public void printStatements() {
@@ -42,7 +46,6 @@ public class TestJ {
 	}
 
 	public void printLiteralValues(){
-
 	}
 
 	private void initModel() {
