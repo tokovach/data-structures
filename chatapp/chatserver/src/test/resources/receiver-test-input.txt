@@ -1,3 +1,0 @@
-{"actionType":"CLIENT_MESSAGE","time":"12.12.12","clientMessage":"hi","username":"Test"}
-{"actionType":"CLIENT_MESSAGE","time":"12.12.12","clientMessage":"there","username":"Test"}
-{"actionType":"CLIENT_MESSAGE","time":"12.12.12","clientMessage":"what","username":"Test"}

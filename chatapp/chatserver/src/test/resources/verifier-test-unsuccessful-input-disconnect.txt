@@ -1,1 +1,0 @@
-{"actionType":"SEND_USERNAME","time":"12.12.12","username":"user"}

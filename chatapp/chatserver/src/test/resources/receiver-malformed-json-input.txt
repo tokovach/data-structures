@@ -1,1 +1,0 @@
-{"actionType":"CLIENT_MESSAGE","time":"12.12.12","clientMessage":"there","user":"Test"}
